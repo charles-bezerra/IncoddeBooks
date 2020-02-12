@@ -50,10 +50,8 @@ export default class App extends React.Component {
     componentDidMount() {
         setInterval(() => {
             callApi(this.props.typeList)
-                .then(
-                    response => this.setState({ books: response })  )
-                .catch(
-                    erro => console.log(erro)  );
+                .then( response => this.setState({ books: response })  )
+                .catch( error => console.log(error)  );
         }, 4000);
     }
 

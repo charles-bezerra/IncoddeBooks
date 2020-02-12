@@ -10,18 +10,13 @@ use App\User;
 class UserController extends Controller
 {
     public function books(){
-        if(Auth::check()){
-            $id = Auth::id();
-            $books = User::find($id)->book->toJson();
-            return $books;
-        }
+        if(Auth::check())
+            return User::find(Auth::id())->book->all()->toJson();
     }
 
     public function loans(){
-        if(Auth::check()){
-            $id = Auth::id();
-            return User::find($id)->loan->toJson();
-        }
+        if(Auth::check())
+            return User::find(Auth::id())->loan->all()->toJson(); 
     }
 
     /**

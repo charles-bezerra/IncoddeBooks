@@ -40,7 +40,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/books', 'BookController@all')->name('books');
 
-Route::get('/user/books', 'UserController@books')->name('user.books');
-Route::get('/user/loans', 'UserController@loans')->name('user.loans');
+Route::get('/user/books', 'UserController@books');
+Route::get('/user/loans', 'UserController@loans');
 
 Route::post('/book/store', 'BookController@store');

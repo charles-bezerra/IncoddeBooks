@@ -69842,8 +69842,8 @@ function (_React$Component) {
           return _this2.setState({
             books: response
           });
-        })["catch"](function (erro) {
-          return console.log(erro);
+        })["catch"](function (error) {
+          return console.log(error);
         });
       }, 4000);
     }
