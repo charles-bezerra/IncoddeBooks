@@ -44,15 +44,16 @@ class BookController extends Controller
     {
         if (Auth::check()){
             $book = new Book();
-            $book->name = $request->$_POST['name'];
-            $book->url_image = $request->$_POST['url_image'];
-            $book->details = $request->$_POST['details'];
+            $book->name = $request->input('name');
+            $book->url_image = $request->input('url_image');
+            $book->details = $request->input('details');
             $book->id_author = Auth::id();
+            $book->free = true;
             $book->save();
             
-            return response()->json(['success' => true],201);
+            return response()->json(['success' => true]);
         }
-        return response()->json(['success' => false],201);
+        return response()->json(['success' => false]);
     }
 
     /**
@@ -62,8 +63,7 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {            
     }
 
     /**

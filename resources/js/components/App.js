@@ -27,7 +27,7 @@ async function callApi(type){
         case typeList.loanBooks:
             books = await fetch('/user/loans');
             break;
-        
+    
         default:
             break;
     }
@@ -43,9 +43,8 @@ export default class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            books: <MySpinner />
+            books: []
         };
-
     }
 
     componentDidMount() {
@@ -55,7 +54,7 @@ export default class App extends React.Component {
                     response => this.setState({ books: response })  )
                 .catch(
                     erro => console.log(erro)  );
-        }, 3000);
+        }, 4000);
     }
 
     render(){
@@ -65,8 +64,8 @@ export default class App extends React.Component {
                     <div className="col-sm-12 col-md-4 col-lg-2">
                         <Nav/>
                     </div>
-                    <div className="col-sm-12 col-md-8 col-lg-10">
-                        <GridCard books={this.state.books}/>
+                    <div className="col-sm-12 col-md-8 col-lg-10"> 
+                        <GridCard books={this.state.books}/> 
                     </div>                    
                 </div>
             </div>

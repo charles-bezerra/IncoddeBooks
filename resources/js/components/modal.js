@@ -4,11 +4,13 @@ import axios from 'axios';
 export default class Modal extends React.Component {
     constructor(props){
         super(props);
+        
         this.state = {
             name: '',
             url_image: '',
             details: ''
         }
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -31,14 +33,16 @@ export default class Modal extends React.Component {
         axios
             .post(
                 '/book/store', 
-                submit, 
-                { headers: {'content-type': 'application/json' } }
+                submit
             )
             .then(response => {
-                console.log(response);
+                if( response.data.success )
+                    alert('Cadastro realizado com sucesso!');
+                else
+                    alert('Não foi possível cadastrar seu livro!');
             })
             .catch(error => {
-                console.log(error); 
+                console.log(error.response.data.message); 
             });
     }
 

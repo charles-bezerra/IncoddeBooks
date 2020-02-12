@@ -27,7 +27,9 @@ export default class Card extends React.Component {
                 />
                 <div className="card-body">
                     <h5 className="card-title">
-                        <a href={"/books/" + this.props.id}>{ this.props.name.substring(0,16) + '...' }</a>
+                        <a href={"/books/" + this.props.id}>
+                            { this.props.name.substring(0,16) + '...' }
+                        </a>
                     </h5>
                     <p className="card-text">
                         { this.props.details.substring(0,100) + '...' }

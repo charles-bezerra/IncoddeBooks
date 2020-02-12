@@ -12,7 +12,8 @@ class UserController extends Controller
     public function books(){
         if(Auth::check()){
             $id = Auth::id();
-            return User::find($id)->books->toJson();
+            $books = User::find($id)->book->toJson();
+            return $books;
         }
     }
 
@@ -20,7 +21,7 @@ class UserController extends Controller
         if(Auth::check()){
             $id = Auth::id();
             return User::find($id)->loan->toJson();
-        }    
+        }
     }
 
     /**

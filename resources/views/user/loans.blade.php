@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-    <div id="loanBooks"></div>
+    <div id='loanBooks'></div>
 @endsection

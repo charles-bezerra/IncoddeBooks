@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div id="allBooks"></div>
+    <div id='allBooks'></div>
 @endsection
 
 

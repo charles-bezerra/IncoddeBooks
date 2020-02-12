@@ -69827,7 +69827,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
     _this.state = {
-      books: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_spinner__WEBPACK_IMPORTED_MODULE_5__["MySpinner"], null)
+      books: []
     };
     return _this;
   }
@@ -69845,7 +69845,7 @@ function (_React$Component) {
         })["catch"](function (erro) {
           return console.log(erro);
         });
-      }, 3000);
+      }, 4000);
     }
   }, {
     key: "render",
@@ -70136,14 +70136,10 @@ function (_React$Component) {
         url_image: this.state.url_image,
         details: this.state.details
       };
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/book/store', submit, {
-        headers: {
-          'content-type': 'application/json'
-        }
-      }).then(function (response) {
-        console.log(response);
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/book/store', submit).then(function (response) {
+        if (response.data.success) alert('Cadastro realizado com sucesso!');else alert('Não foi possível cadastrar seu livro!');
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response.data.message);
       });
     }
   }, {
@@ -70298,7 +70294,7 @@ var MySpinner = function MySpinner(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "w-100",
     style: {
-      height: '150px'
+      height: '300px'
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "spinner-border-lg text-primary",
