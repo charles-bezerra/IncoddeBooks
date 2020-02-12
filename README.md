@@ -1,4 +1,4 @@
-### Guia de instalação (Comandos)
+# Guia de instalação (Comandos)
 
 ## Obs
 
@@ -11,18 +11,18 @@ e config/database.php.
 
 ## Terminal (pasta do projeto) 
 
-# Comando 1
+### Comando 1
 
 -> composer dump-autoload
 
-# Comando 2
+### Comando 2
 
 -> npm install
 
-# Comando 3
+### Comando 3
 
 -> npm run dev
 
-# Comando 4
+### Comando 4
 
 -> php artisan migrate --seed
