@@ -2,10 +2,10 @@
 
 ## Obs
 
-Lembre-se de configurar o banco de dados, usuario e host na pasta .env
-e config/database.php.
+Lembre-se de configurar o banco de dados, usuario e host na pasta <b>.env</b>
+e <b>config/database.php</b>.
 
-## Abra o mysql e crie o database;
+## Abra o mysql e crie o database
 
 -> create database incoddeBooks;
 
