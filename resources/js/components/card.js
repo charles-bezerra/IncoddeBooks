@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ButtonCard = (props) => (                
-    props.free ? 
+const ButtonCard = (props) => (
+    props.free ?
     (<button className="btn btn-primary btn-block" onClick={props.onClick}>Alugar</button>) :
     (<a href="#" className="btn btn-secondary btn-block" disabled>Alocado</a>)
 
@@ -19,10 +19,10 @@ export default class Card extends React.Component {
 
     render(){
         return (
-            <div className="card shadow-sm rounded mt-3" style={{width: '16rem'}}>
-                <img 
-                    src={ this.props.url_image } 
-                    className="card-img-top" 
+            <div className="card shadow rounded mt-3" style={{width: '16rem'}}>
+                <img
+                    src={ this.props.url_image }
+                    className="card-img-top"
                     alt="Loading..."
                 />
                 <div className="card-body">
@@ -35,10 +35,10 @@ export default class Card extends React.Component {
                         { this.props.details.substring(0,100) + '...' }
                     </p>
                     <hr/>
-                    <ButtonCard 
-                        free={ this.props.free } 
-                        onClick={ this.onClick } 
-                    />               
+                    <ButtonCard
+                        free={ this.props.free }
+                        onClick={ this.onClick }
+                    />
                 </div>
             </div>
         );

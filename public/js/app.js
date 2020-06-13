@@ -69752,65 +69752,75 @@ function _callApi() {
   _callApi = _asyncToGenerator(
   /*#__PURE__*/
   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(type) {
-    var books, body;
+    var response, json;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            _context.prev = 0;
             _context.t0 = type;
-            _context.next = _context.t0 === typeList.allBooks ? 3 : _context.t0 === typeList.userBooks ? 7 : _context.t0 === typeList.loanBooks ? 11 : 15;
+            _context.next = _context.t0 === typeList.allBooks ? 4 : _context.t0 === typeList.userBooks ? 8 : _context.t0 === typeList.loanBooks ? 12 : 16;
             break;
 
-          case 3:
-            _context.next = 5;
+          case 4:
+            _context.next = 6;
             return fetch('/books');
 
-          case 5:
-            books = _context.sent;
-            return _context.abrupt("break", 16);
+          case 6:
+            response = _context.sent;
+            return _context.abrupt("break", 17);
 
-          case 7:
-            _context.next = 9;
-            return fetch('/user/books');
+          case 8:
+            _context.next = 10;
+            return fetch('/books/1');
 
-          case 9:
-            books = _context.sent;
-            return _context.abrupt("break", 16);
+          case 10:
+            response = _context.sent;
+            return _context.abrupt("break", 17);
 
-          case 11:
-            _context.next = 13;
-            return fetch('/user/loans');
+          case 12:
+            _context.next = 14;
+            return fetch('/loans/1');
 
-          case 13:
-            books = _context.sent;
-            return _context.abrupt("break", 16);
-
-          case 15:
-            return _context.abrupt("break", 16);
+          case 14:
+            response = _context.sent;
+            return _context.abrupt("break", 17);
 
           case 16:
-            _context.next = 18;
-            return books.json();
+            return _context.abrupt("break", 17);
 
-          case 18:
-            body = _context.sent;
+          case 17:
+            _context.next = 19;
+            return response.json();
 
-            if (!(books.status !== 200)) {
-              _context.next = 21;
+          case 19:
+            json = _context.sent;
+
+            if (!json.books) {
+              _context.next = 24;
               break;
             }
 
-            throw Error(body.message);
+            return _context.abrupt("return", json.books);
 
-          case 21:
-            return _context.abrupt("return", body);
+          case 24:
+            return _context.abrupt("return", []);
 
-          case 22:
+          case 25:
+            _context.next = 30;
+            break;
+
+          case 27:
+            _context.prev = 27;
+            _context.t1 = _context["catch"](0);
+            console.log(_context.t1);
+
+          case 30:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee);
+    }, _callee, null, [[0, 27]]);
   }));
   return _callApi.apply(this, arguments);
 }
@@ -69947,7 +69957,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card shadow-sm rounded mt-3",
+        className: "card shadow rounded mt-3",
         style: {
           width: '16rem'
         }
@@ -69990,25 +70000,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./card */ "./resources/js/components/card.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
  //My implementations
 
@@ -70020,47 +70012,19 @@ var MyCard = function MyCard(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_card__WEBPACK_IMPORTED_MODULE_1__["default"], props));
 };
 
-var GridCard =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(GridCard, _React$Component);
-
-  function GridCard() {
-    _classCallCheck(this, GridCard);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(GridCard).apply(this, arguments));
-  }
-
-  _createClass(GridCard, [{
-    key: "generateView",
-    value: function generateView() {
-      var books = [];
-
-      for (var i = 0; i < this.props.books.length; i++) {
-        books.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MyCard, _extends({
-          key: i
-        }, this.props.books[i])));
-      }
-
-      return books;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "GridCard"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, this.generateView())));
-    }
-  }]);
-
-  return GridCard;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-
+function GridCard(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "GridCard"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, props.books.map(function (e, i) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MyCard, _extends({
+      key: i
+    }, e));
+  }))));
+}
 
 /***/ }),
 
@@ -70324,8 +70288,8 @@ var MySpinner = function MySpinner(props) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/charles/Desktop/incoddeBooks/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/charles/Desktop/incoddeBooks/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/charles/Desktop/IncoddeBooks/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/charles/Desktop/IncoddeBooks/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

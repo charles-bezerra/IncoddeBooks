@@ -9,6 +9,11 @@ use App\Book;
 
 class BookController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,11 +24,9 @@ class BookController extends Controller
     }
 
     public function all(){
-        if(Auth::check()){
-            return Book::all()->toJson();
-        }
+        return response()->json([ "books" => Book::all() ]);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -42,18 +45,16 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::check()){
-            $book = new Book();
-            $book->name = $request->input('name');
-            $book->url_image = $request->input('url_image');
-            $book->details = $request->input('details');
-            $book->id_author = Auth::id();
-            $book->free = true;
-            $book->save();
-            
-            return response()->json(['success' => true]);
-        }
-        return response()->json(['success' => false]);
+        $book = new Book();
+        $book->name = $request->input('name');
+        $book->url_image = $request->input('url_image');
+        $book->details = $request->input('details');
+        $book->id_author = $request->input('id_author');
+        $book->free = true;
+        $book->save();
+
+        return response()->json(['success' => true]);
+
     }
 
     /**
@@ -63,7 +64,7 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {            
+    {
     }
 
     /**

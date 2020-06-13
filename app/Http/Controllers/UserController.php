@@ -3,20 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Auth;
+use Auth;
 use App\User;
 
 class UserController extends Controller
 {
-    public function books(){
-        if(Auth::check())
-            return User::find(Auth::id())->book->all()->toJson();
+    public function __construct(){
+        $this->middleware("auth");
     }
 
-    public function loans(){
-        if(Auth::check())
-            return User::find(Auth::id())->loan->all()->toJson(); 
+    /**
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function books($id){
+        return response()->json(["books" => User::find( $id )->book ]);
+    }
+
+    public function loans($id){
+        return response()->json(["loans" => User::find( $id )->loan ]);
     }
 
     /**

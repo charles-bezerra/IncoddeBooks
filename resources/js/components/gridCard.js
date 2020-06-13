@@ -9,24 +9,14 @@ const MyCard = (props) => (
     </div>
 );
 
-export default class GridCard extends React.Component {
-
-    generateView(){
-        let books = [];
-        for(let i=0; i < this.props.books.length; i++)
-            books.push(<MyCard key={i} {...this.props.books[i]} />);
-        return books;
-    }
-
-    render(){
-        return (
-            <div className="GridCard">
-                <div className="container">
-                    <div className="row">
-                        { this.generateView() }
-                    </div>
-                </div>
+export default function GridCard (props) {
+    return (
+    <div className="GridCard">
+        <div className="container">
+            <div className="row">
+            { props.books.map( (e, i) => <MyCard key={i} {...e} /> ) }
             </div>
-        );
-    }
+        </div>
+    </div>
+    );
 }
