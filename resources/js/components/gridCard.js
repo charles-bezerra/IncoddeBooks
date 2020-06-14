@@ -4,7 +4,7 @@ import React from 'react';
 import Card from './card';
 
 const MyCard = (props) => (
-    <div className="col-md-6 col-lg-3">
+    <div className="col-sm-12 col-md-6 col-lg-3">
         <Card {...props} />
     </div>
 );
@@ -14,7 +14,7 @@ export default function GridCard (props) {
     <div className="GridCard">
         <div className="container">
             <div className="row">
-            { props.books.map( (e, i) => <MyCard key={i} {...e} /> ) }
+            { props.books.map((e, i) => <MyCard key={i} {...e} />) }
             </div>
         </div>
     </div>

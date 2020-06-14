@@ -11,22 +11,23 @@
 |
 */
 
-
 Auth::routes();
 Route::get('/', function () { return redirect('/home'); });
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Routes Views
+Route::get('/home/book/{id}', "BookController@index");
 Route::middleware('auth')->get('/home/user/books', function (){ return view('user.books'); });
 Route::middleware('auth')->get('/home/user/loans', function (){ return view('user.loans'); });
 
-Route::resource('user', 'UserController');
-Route::get('/books/{id}', 'UserController@books');
-Route::get('/loans/{id}', 'UserController@loans');
+//Routes responses
+Route::get('/user/book', 'UserController@books');
+Route::get('/user/loan', 'UserController@loans');
 
-Route::resource('book', 'BookController');
-Route::get('/books', 'BookController@all')->name('books');
-Route::post('/book/store', 'BookController@store');
+Route::get('/book', 'BookController@all');
+Route::post('/book', 'BookController@store');
 
-Route::resource('loan', 'LoanController');
+Route::post('/loan', 'LoanController@store');
+
 
 

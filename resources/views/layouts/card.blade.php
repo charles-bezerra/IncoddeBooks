@@ -1,3 +1,2 @@
 @section('card')
-    
 @endsection

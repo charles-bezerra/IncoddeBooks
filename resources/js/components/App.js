@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import axios from "axios";
 
 //My implementations
 import GridCard from './gridCard';
 import Nav from './nav';
-import { MySpinner } from './spinner'
 
 const typeList = {
     allBooks: 1,
@@ -12,71 +12,65 @@ const typeList = {
     loanBooks: 3
 }
 
-async function callApi(type){
+const MySpinner = (props) => (
+    <div className="text-center w-100">
+        <div className="spinner-border spinner-border-lg text-primary" role="status">
+            <span className="sr-only">Loading...</span>
+        </div>
+    </div>
+);
+
+async function getBooksApi(type){
     let response;
     try{
         switch (type) {
             case typeList.allBooks:
-                response = await fetch('/books');
+                response = await axios.get('/book');
                 break;
-
             case typeList.userBooks:
-                response = await fetch('/books/1');
+                response = await axios.get('/user/book');
                 break;
-
             case typeList.loanBooks:
-                response = await fetch('/loans/1');
+                response = await axios.get('/user/loan');
                 break;
-
             default:
                 break;
         }
-
-        const json = await response.json();
-
-        if(json.books)
-            return json.books;
-        else
-            return [];
+        return response.data.books;
     }
     catch(error) {
         console.log(error);
     }
 }
 
-export default class App extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            books: []
-        };
+export default function App (props) {
+    const [books, setBooks] = useState(null);
+
+    function updateBooks() {
+        getBooksApi(props.typeList)
+            .then( (res) => {
+                setBooks(res);
+            })
+            .catch( (err) => {
+                console.log(err);
+            });
     }
 
-    componentDidMount() {
-        setInterval(
-        () => {
+    useEffect(() => {
+        setInterval( updateBooks , 5000);
+    }, []);
 
-        callApi(this.props.typeList)
-            .then( response => this.setState({ books: response })  )
-            .catch( error => console.log(error)  );
-
-        }, 4000);
-    }
-
-    render(){
-        return (
-            <div className="ViewBooks w-100">
-                <div className="row w-100">
-                    <div className="col-sm-12 col-md-4 col-lg-2">
-                        <Nav/>
-                    </div>
-                    <div className="col-sm-12 col-md-8 col-lg-10">
-                        <GridCard books={this.state.books}/>
-                    </div>
-                </div>
+    return (
+    <div className="ViewBooks w-100">
+        <div className="row w-100 h-100">
+            <div className="col-sm-12 col-md-4 col-lg-2">
+                <Nav/>
             </div>
-        );
-    }
+            <div className="col-sm-12 col-md-8 col-lg-10">
+                { (books === null) ? <MySpinner/> : <GridCard books={books}/> }
+            </div>
+        </div>
+    </div>);
 }
 
 
@@ -86,11 +80,13 @@ if (document.getElementById('allBooks'))
         document.getElementById('allBooks')
     );
 
+
 if (document.getElementById('userBooks'))
     ReactDOM.render(
         <App typeList={typeList.userBooks} />,
         document.getElementById('userBooks')
     );
+
 
 if (document.getElementById('loanBooks'))
     ReactDOM.render(

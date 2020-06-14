@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 
 class UserController extends Controller
@@ -13,20 +12,23 @@ class UserController extends Controller
     }
 
     /**
-     * @param int $id
+     * To return all user books
      * @return \Illuminate\Http\Response
      */
-    public function books($id){
-        return response()->json(["books" => User::find( $id )->book ]);
+    public function books(){
+        return response()->json(["books" => User::find( Auth::user()->id )->book ]);
     }
 
-    public function loans($id){
-        return response()->json(["loans" => User::find( $id )->loan ]);
+    /**
+     * To return all user leons
+     * @return \Illuminate\Http\Response
+     */
+    public function loans(){
+        return response()->json(["books" => User::find( Auth::user()->id )->loan ]);
     }
 
     /**
      * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function index()

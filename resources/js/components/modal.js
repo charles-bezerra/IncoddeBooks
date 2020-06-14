@@ -4,7 +4,7 @@ import axios from 'axios';
 export default class Modal extends React.Component {
     constructor(props){
         super(props);
-        
+
         this.state = {
             name: '',
             url_image: '',
@@ -21,7 +21,7 @@ export default class Modal extends React.Component {
         });
     }
 
-    handleSubmit (e) {  
+    handleSubmit (e) {
         e.preventDefault();
 
         let submit = {
@@ -32,7 +32,7 @@ export default class Modal extends React.Component {
 
         axios
             .post(
-                '/book/store', 
+                '/book/store',
                 submit
             )
             .then(response => {
@@ -42,7 +42,7 @@ export default class Modal extends React.Component {
                     alert('Não foi possível cadastrar seu livro!');
             })
             .catch(error => {
-                console.log(error.response.data.message); 
+                console.log(error.response.data.message);
             });
     }
 
@@ -58,10 +58,14 @@ export default class Modal extends React.Component {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <form onSubmit={ this.handleSubmit }>    
+                        <form onSubmit={ this.handleSubmit }>
                             <div className="form-group">
                                 <label>Nome</label>
-                                <input type="text" value={this.state.name} className="form-control" placeholder="Nome do livro" required="required" name="name" onChange={this.handleChange}/>
+                                <input
+                                    type="text"
+                                    value={this.state.name}
+                                    className="form-control"
+                                    placeholder="Nome do seu livro" required="required" name="name" onChange={this.handleChange}/>
                             </div>
                             <div className="form-group">
                                 <label>Imagem (url)</label>
@@ -69,7 +73,16 @@ export default class Modal extends React.Component {
                             </div>
                             <div className="form-group">
                                 <label>Descrição</label>
-                                <textarea value={this.state.details} className="form-control" id="exampleFormControlTextarea1" rows="3" required="required" name="details" onChange={this.handleChange}></textarea>
+                                <textarea
+                                    value={this.state.details}
+                                    className="form-control"
+                                    id="exampleFormControlTextarea1"
+                                    rows="4"
+                                    required="required"
+                                    name="details"
+                                    onChange={this.handleChange}>
+                                    Seu texto...
+                                </textarea>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Fechar</button>
