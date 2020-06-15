@@ -2,11 +2,20 @@ import React from 'react';
 import axios from "axios";
 
 const ButtonCard = (props) => (
-    props.free ?
-    (<button className="btn btn-primary btn-sm btn-block" onClick={props.onClick}>Alugar</button>) :
-    (<a href="#" className="btn btn-secondary btn-sm btn-block" disabled>Alocado</a>)
-
+    (props.free) ?
+        <button
+            className="btn btn-primary btn-sm btn-block"
+            onClick={props.onClick}>
+            Alugar
+        </button> :
+        <a
+            href="#"
+            className="btn btn-secondary btn-sm btn-block"
+            disabled>
+            Indisponível
+        </a>
 );
+
 
 export default class Card extends React.Component {
     constructor(props){
@@ -14,7 +23,7 @@ export default class Card extends React.Component {
         this.onClick = this.onClick.bind(this);
     }
 
-    onClick(e) {
+    onClick(event) {
         axios
         .post("/loan", {id_book: this.props.id})
         .then((response) => {
@@ -30,7 +39,7 @@ export default class Card extends React.Component {
         const details = this.props.details;
 
         return (
-            <div className="card shadow rounded mt-5" style={{minWidth: '100%'}}>
+            <div className="card shadow rounded-lg mt-4" style={{minWidth: '100%'}}>
                 <img
                     src={ this.props.url_image }
                     className="card-img-top"

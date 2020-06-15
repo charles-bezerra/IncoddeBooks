@@ -66701,9 +66701,9 @@ function App(props) {
     className: "col-sm-12 col-md-4 col-lg-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_nav__WEBPACK_IMPORTED_MODULE_5__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "col-sm-12 col-md-8 col-lg-10"
-  }, books === null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(MySpinner, null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_gridCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, books === null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(MySpinner, null) : books.length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_gridCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
     books: books
-  }))));
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Nenhum livro encontrado"))));
 }
 if (document.getElementById('allBooks')) react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(App, {
   typeList: typeList.allBooks
@@ -66764,7 +66764,7 @@ var ButtonCard = function ButtonCard(props) {
     href: "#",
     className: "btn btn-secondary btn-sm btn-block",
     disabled: true
-  }, "Alocado");
+  }, "Indispon\xEDvel");
 };
 
 var Card = /*#__PURE__*/function (_React$Component) {
@@ -66784,7 +66784,7 @@ var Card = /*#__PURE__*/function (_React$Component) {
 
   _createClass(Card, [{
     key: "onClick",
-    value: function onClick(e) {
+    value: function onClick(event) {
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/loan", {
         id_book: this.props.id
       }).then(function (response) {
@@ -66799,7 +66799,7 @@ var Card = /*#__PURE__*/function (_React$Component) {
       var name = this.props.name;
       var details = this.props.details;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card shadow rounded mt-5",
+        className: "card shadow rounded-lg mt-4",
         style: {
           minWidth: '100%'
         }

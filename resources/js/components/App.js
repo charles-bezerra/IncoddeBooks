@@ -36,6 +36,7 @@ async function getBooksApi(type){
             default:
                 break;
         }
+
         return response.data.books;
     }
     catch(error) {
@@ -67,10 +68,16 @@ export default function App (props) {
                 <Nav/>
             </div>
             <div className="col-sm-12 col-md-8 col-lg-10">
-                { (books === null) ? <MySpinner/> : <GridCard books={books}/> }
+                { (books === null) ?
+                    (<MySpinner/>) :
+                    (books.length > 0) ?
+                        <GridCard books={books}/> :
+                        <p>Nenhum livro encontrado</p>
+                }
             </div>
         </div>
-    </div>);
+    </div>
+    );
 }
 
 
