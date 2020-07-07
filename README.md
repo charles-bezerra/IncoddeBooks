@@ -10,6 +10,7 @@
     <li>ReactJS</li>
     <li>Axios</li>
     <li>Bootstrap 4</li>
+    <li>MySQL</li>
 </ul>
 
 ## Guia de instalação
