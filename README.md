@@ -11,18 +11,12 @@ e <b>config/database.php</b>.
 
 ## Terminal (pasta do projeto) 
 
-### Comando 1
+<p> Digitar os seguintes comandos: </p>
 
--> composer dump-autoload
+> composer dump-autoload 
 
-### Comando 2
+> npm install //Instalando as dependências do node
 
--> npm install
+> npm run dev //Construindo o app react
 
-### Comando 3
-
--> npm run dev
-
-### Comando 4
-
--> php artisan migrate --seed
+> php artisan migrate --seed //Migrando o modelo de banco de dados e criando entidades de teste
