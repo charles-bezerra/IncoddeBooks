@@ -1,22 +1,45 @@
-# Guia de instalação (Comandos)
+# IncoddeBooks
 
-## Obs
+<p>O projeto consiste em um site que é possível se cadastrar, cadastrar seu livro e alocar livros de outras pessoas</p>
 
-Lembre-se de configurar o banco de dados, usuario e host na pasta <b>.env</b>
+## Tecnológias usadas 
+
+<ul>
+    <li>PHP 7</li>
+    <li>Laravel 6</li>
+    <li>ReactJS</li>
+    <li>Axios</li>
+    <li>Bootstrap 4</li>
+</ul>
+
+## Guia de instalação
+
+### Na pasta do projeto
+
+Configurar o banco de dados, usuario e host na pasta <b>.env</b>
 e <b>config/database.php</b>.
 
-## Abra o mysql e crie o database
+### Abra o mysql e crie o database
 
--> create database incoddeBooks;
+> create database incoddeBooks;
 
-## Terminal (pasta do projeto) 
+### Terminal (pasta do projeto) 
 
-<p> Digitar os seguintes comandos: </p>
+<p> Digitar os seguintes comandos:</p>
 
-> composer dump-autoload 
 
-> npm install //Instalando as dependências do node
+<small>Instalando as dependências do composer e nodejs</small>
 
-> npm run dev //Construindo o app react
+> composer install && npm install
 
-> php artisan migrate --seed //Migrando o modelo de banco de dados e criando entidades de teste
+<small>Build app react para desenvolvimento</small>
+
+> npm run dev
+
+<small>ou para produção</small>
+
+> npm run prod
+
+<small>Realizar a migração do banco de dados:</small>
+
+> php artisan migrate --seed
